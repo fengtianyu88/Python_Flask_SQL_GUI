@@ -34,7 +34,7 @@ th, td {
        </table>
 
     {% elif data.hasData %}
-
+    <h3>Make changes to the fields below and then click update<br></h3>
 	    <form action="/edit" method="post">
         First name: <input id="fname" type="text" name="fname"  value = {{data.fname}} required><br>
         Last name: <input id="lname" type="text" name="lname" value = {{data.lname}} required><br>
