@@ -62,7 +62,6 @@ def editData():
         update += "firstname = '" + request.form['fname'] + "', "
         update += "lastname = '" + request.form['lname'] + "', "
         update += "classperiod = " + request.form['period']
-        print('point 4')
         update += " WHERE id = " + request.form['id2']
         update += ";"
         classes_DB_agent.execute(update)
