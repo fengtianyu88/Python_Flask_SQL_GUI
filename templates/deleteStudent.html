@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Delete Student in Database</title>
+</head>
+<body>
+
+
+    {% if data.confirm %}
+    <h3>The student was deleted succesfully</h3>
+
+    {% elif data.hasData %}
+
+	    <form action="/delete" method="post">
+        First name: <input id="locked_fname" type="text" name="locked_fname"  value = {{data.fname}} disabled><br>
+        Last name: <input id="locked_lname" type="text" name="locked_lname" value = {{data.lname}} disabled><br>
+        Student ID: <input id="idLocked" type="number" name="idLocked" value = {{data.id}} disabled><br>
+        Class Period: <input id="locked_period" type="number" name="locked_period"  value = {{data.classperiod}} disabled><br>
+        <input id="id2" type="hidden" name="id2" value={{data.id}}>
+        <input id="secondSubmit" type="hidden" name="secondSubmit" value=true>
+        <input type="submit"  value="Delete this Student"><br>
+        </form> <br>
+
+    {% else %}
+
+      <h3>Enter the ID of the student you wish to delete<br></h3>
+        <form action="/delete" method="post">
+        Student ID: <input id="id" type="number" name="id" min="1000000" max="9999999" step="1" required><br>
+        <input id="firstSubmit" type="hidden" name="firstSubmit" value=true><br>
+        <input type="submit"  value="Find student"><br>
+        </form> <br>
+    {% endif %}
+
+ <br>
+    <input type="button" onclick="location.href='/';" value="Return to Mainpage" />
+    </div>
+</body>
+</html>

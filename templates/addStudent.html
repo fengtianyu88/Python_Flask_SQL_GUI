@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 6px;
+}
+    </style>
+    <meta charset="UTF-8">
+    <title>Add student to Database</title>
+</head>
+<body>
+<h3> Fill out the form and submit to add a student to the database</h3>
+	    <form action="/add" method="post">
+        First name: <input id="fname" type="text" name="fname" required><br>
+        Last name: <input id="lname" type="text" name="lname" required><br>
+        Student ID: <input id="id" type="number" name="id" min="1000000" max="9999999" step="1" required><br>
+        Class Period: <input id="period" type="number" name="period" min="0" max="8" step="1" required><br>
+        <input type="submit"  value="Add Student to Database"><br>
+        </form> <br>
+    {% if data.hasData %}
+    <h3>The student was added succesfully</h3>
+        <table>
+        <tr>
+         <th>Student ID</th>
+         <th>First Name</th>
+         <th>Last Name</th>
+         <th>Class Period</th>
+        </tr>
+        <tr>
+         <td>{{data.id}}</td>
+         <td>{{data.fname}}</td>
+         <td>{{data.lname}}</td>
+         <td>{{data.classperiod}}</td>
+        </tr>
+       </table>
+    {% endif %}
+
+<div>
+        <br>
+    <input type="button" onclick="location.href='/';" value="Return to Mainpage" />
+    </div>
+</body>
+</html>

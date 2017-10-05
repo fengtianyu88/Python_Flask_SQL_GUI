@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 6px;
+}
+    </style>
+    <meta charset="UTF-8">
+    <title>Edit Student in Database</title>
+</head>
+<body>
+
+
+    {% if data.confirm %}
+    <h3>The student was modified succesfully</h3>
+        <table>
+        <tr>
+         <th>Student ID</th>
+         <th>First Name</th>
+         <th>Last Name</th>
+         <th>Class Period</th>
+        </tr>
+        <tr>
+         <td>{{data.id}}</td>
+         <td>{{data.fname}}</td>
+         <td>{{data.lname}}</td>
+         <td>{{data.classperiod}}</td>
+        </tr>
+       </table>
+
+    {% elif data.hasData %}
+
+	    <form action="/edit" method="post">
+        First name: <input id="fname" type="text" name="fname"  value = {{data.fname}} required><br>
+        Last name: <input id="lname" type="text" name="lname" value = {{data.lname}} required><br>
+        Student ID: <input id="idLocked" type="number" name="idLocked" value = {{data.id}} disabled><br>
+        Class Period: <input id="period" type="number" name="period" min="0" max="8" step="1" value = {{data.classperiod}} required><br>
+        <input id="id2" type="hidden" name="id2" value={{data.id}}>
+        <input id="secondSubmit" type="hidden" name="secondSubmit" value=true>
+        <input type="submit"  value="Update this Student"><br>
+        </form> <br>
+
+    {% else %}
+
+      <h3>Enter the ID of the Student you wish to edit<br></h3>
+        <form action="/edit" method="post">
+        Student ID: <input id="id" type="number" name="id" min="1000000" max="9999999" step="1" required><br>
+        <input id="firstSubmit" type="hidden" name="firstSubmit" value=true><br>
+        <input type="submit"  value="Find student"><br>
+        </form> <br>
+    {% endif %}
+ <br>
+    <input type="button" onclick="location.href='/';" value="Return to Mainpage" />
+    </div>
+</body>
+</html>

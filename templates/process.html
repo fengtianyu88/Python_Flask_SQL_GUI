@@ -1,0 +1,29 @@
+
+<html>
+	<head>
+		<title>Practice Flask-Post</title>
+        <script>
+    function getData(){
+     var xhttp = new XMLHttpRequest();
+	    xhttp.onreadystatechange = function() {
+		     if (this.readyState == 4 && this.status == 200) {
+
+	     	 document.getElementById("2").innerHTML = this.responseText;
+	     }
+	   }
+		var userRequest ='getData';
+	   xhttp.open("GET", userRequest, true);
+	   xhttp.send();
+     }
+
+        </script>
+	</head>
+	<body>
+    <div id = '1'><h3>Your name is {{user['fname']}} {{user['lname']}} </h3></div>
+
+    <button onclick ='getData()' >Press the button to retrive data</button> <br>
+
+    <div id="2"> </div>
+
+	</body>
+</html>
